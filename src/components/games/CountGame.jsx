@@ -53,11 +53,10 @@ export default function CountGame({ onCorrect, onIncorrect }) {
       {/* Title */}
       <div className="text-center mb-6">
         <h3 className="font-display text-2xl md:text-3xl text-indigo-900 mb-1">
-          Combien y a-t-il de {item.name} ?
+        كم عدد  {item.name} ?
         </h3>
         <p className="text-slate-500 font-sans text-sm md:text-base">
-          Compte bien les objets ci-dessous et clique sur le bon chiffre !
-        </p>
+        قم بعدّ العناصر أدناه بعناية وانقر على الرقم الصحيح!        </p>
       </div>
 
       {/* Grid of items */}

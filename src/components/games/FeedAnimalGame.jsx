@@ -135,10 +135,9 @@ export default function FeedAnimalGame({ onCorrect, onIncorrect }) {
       {/* Title */}
       <div className="text-center mb-4">
         <h3 className="font-display text-2xl md:text-3xl text-indigo-900 mb-1">
-          Nourris le bon animal !
-        </h3>
+        أطعم الحيوان !        </h3>
         <p className="text-slate-500 text-sm md:text-base">
-          Clique sur la nourriture que mange <strong className="text-indigo-600">{animal.name}</strong> !
+        انقر على الطعام الذي يتناوله <strong className="text-indigo-600">{animal.name}</strong> !
         </p>
       </div>
 

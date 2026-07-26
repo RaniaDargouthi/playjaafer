@@ -99,11 +99,10 @@ export default function WordBuilderGame({ onCorrect, onIncorrect }) {
       {/* Title */}
       <div className="text-center mb-4">
         <h3 className="font-display text-2xl md:text-3xl text-indigo-900 mb-1">
-          Construis le mot !
-        </h3>
+        كوّن الكلمات!
+                </h3>
         <p className="text-slate-500 text-sm md:text-base">
-          Remets les lettres dans le bon ordre pour former le mot.
-        </p>
+        ضع الحروف بالترتيب الصحيح لتكوين الكلمة.        </p>
       </div>
 
       {/* Main Game Card */}
@@ -173,8 +172,8 @@ export default function WordBuilderGame({ onCorrect, onIncorrect }) {
           disabled={typedLetters.length === 0}
           className="px-4 py-2 bg-rose-500 hover:bg-rose-600 text-white rounded-xl shadow-md border-b-4 border-rose-700 active:translate-y-1 active:border-b-0 transition-all font-display text-sm md:text-base disabled:opacity-50 disabled:pointer-events-none"
         >
-          Effacer la lettre ⌫
-        </button>
+          احذف الحرف ⌫       
+ </button>
       </div>
     </div>
   );

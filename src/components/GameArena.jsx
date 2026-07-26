@@ -150,15 +150,15 @@ export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAdd
     switch (gameId) {
       case 1: // Attraper les papillons
         return <ButterflyGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
-      case 6: // Nourrir le bon animal
-        return <FeedAnimalGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
+      case 2: // لوحة الحروف العربية
+           return <ArabicAlphabetGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
       case 3: // Trouver le poisson
         return <FishGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
-      case 9: // Compter les objets
-        return <CountGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
-      case 10: // Puzzle
-        return <PuzzleGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
-      case 11: // Mémoire
+      case 4: // صيد الحروف العربية
+        return <CatchLetterGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
+      case 5: // Jeu de mots arabes
+        return <ArabicWordGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
+      case 6: // Mémoire
         return (
           <MemoryGame
             onCorrect={handleCorrect}
@@ -166,22 +166,30 @@ export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAdd
             onComplete={handleMemoryComplete}
           />
         );
-      case 19: // Construire un mot
-        return <WordBuilderGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
-      case 21: // Jeu de mots arabes
-        return <ArabicWordGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
-      case 22: // صيد الحروف العربية
-        return <CatchLetterGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
-      case 23: // أربط بما يناسب
+     
+      
+      case 7: // أربط بما يناسب
         return <MatchAnimalGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
-      case 24: // أبحث عن القطعة الناقصة
+      
+    
+        case 8: // Construire un mot
+        return <WordBuilderGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
+     
+        case 9: // Compter les objets
+        return <CountGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
+      case 10: // Puzzle
+        return <PuzzleGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
+      
+        case 11: // أبحث عن القطعة الناقصة
         return <FindMissingPieceGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
-      case 25: // لوحة الحروف العربية
-        return <ArabicAlphabetGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
+        case 12: // Nourrir le bon animal
+        return < FeedAnimalGame onCorrect={handleCorrect} onIncorrect={handleIncorrect} />;
+     
+     
       default:
         return (
           <div className="flex flex-col items-center justify-center p-8 text-center text-slate-500">
-            Ce jeu est en cours de création. Revenez bientôt !
+          هذه اللعبة قيد التطوير حاليًا. تابعونا قريبًا!
           </div>
         );
     }
@@ -252,20 +260,20 @@ export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAdd
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
               >
-                Partie en Pause
-              </motion.h4>
+                الجزء متوقف مؤقتًا          
+    </motion.h4>
               <div className="flex gap-4">
                 <button
                   onClick={togglePause}
                   className="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-display font-semibold rounded-2xl shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2 active:translate-y-0.5 transition"
                 >
-                  <Play size={18} /> Continuer
+                  <Play size={18} /> تابع
                 </button>
                 <button
                   onClick={resetGame}
                   className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-display font-semibold rounded-2xl shadow-lg hover:shadow-amber-500/30 flex items-center gap-2 active:translate-y-0.5 transition"
                 >
-                  <RotateCcw size={18} /> Recommencer
+                  <RotateCcw size={18} /> ابدأ من جديد
                 </button>
               </div>
             </div>
@@ -281,22 +289,21 @@ export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAdd
               >
                 <span className="text-7xl mb-4 block">⏰</span>
               </motion.div>
-              <h4 className="font-display text-3xl font-bold mb-2">Temps écoulé !</h4>
+              <h4 className="font-display text-3xl font-bold mb-2">انتهى الوقت !</h4>
               <p className="text-rose-200 mb-6 max-w-sm">
-                Pas de panique ! C'est en faisant des erreurs qu'on apprend. Essaie encore pour t'améliorer !
-              </p>
+              هذه هي المقلاة! هذه أفضل طريقة لفعل ذلك                            </p>
               <div className="flex gap-4">
                 <button
                   onClick={resetGame}
                   className="px-6 py-3 bg-white text-rose-700 font-display font-bold rounded-2xl shadow-lg flex items-center gap-2 active:translate-y-0.5 transition hover:bg-rose-50"
                 >
-                  <RotateCcw size={18} /> Réessayer
+                  <RotateCcw size={18} /> حاول ثانية
                 </button>
                 <button
                   onClick={() => { playClick(); onClose(); }}
                   className="px-6 py-3 bg-rose-800 text-white font-display font-bold rounded-2xl hover:bg-rose-900 flex items-center gap-2 active:translate-y-0.5 transition border border-rose-700"
                 >
-                  Quitter
+                  مغادرة
                 </button>
               </div>
             </div>
@@ -312,7 +319,7 @@ export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAdd
               >
                 <span className="text-8xl mb-4 block">🏆</span>
               </motion.div>
-              <h4 className="font-display text-4xl font-bold mb-2 text-amber-300">Félicitations !</h4>
+              <h4 className="font-display text-4xl font-bold mb-2 text-amber-300">تهانينا !</h4>
               <p className="text-emerald-100 mb-6 text-lg">
                 Tu as gagné avec un score de <strong className="text-white text-xl">{score} points</strong> et récupéré <strong className="text-amber-300 text-xl font-display">{stars} ⭐</strong> !
               </p>
@@ -337,13 +344,13 @@ export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAdd
                   onClick={resetGame}
                   className="px-6 py-3 bg-white text-emerald-700 font-display font-bold rounded-2xl shadow-lg flex items-center gap-2 active:translate-y-0.5 transition hover:bg-emerald-50"
                 >
-                  <RotateCcw size={18} /> Rejouer
+                  <RotateCcw size={18} /> إعادة اللعب
                 </button>
                 <button
                   onClick={() => { playClick(); onClose(); }}
                   className="px-6 py-3 bg-emerald-800 text-white font-display font-bold rounded-2xl hover:bg-emerald-900 flex items-center gap-2 active:translate-y-0.5 transition border border-emerald-700"
                 >
-                  Quitter
+                  مغادرة
                 </button>
               </div>
             </div>

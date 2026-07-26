@@ -8,8 +8,8 @@ const GAME_CARDS = [
   {
     id: 1,
     number: "1",
-    title: "Attraper les papillons",
-    desc: "Attrape les papillons qui volent pour gagner des points.",
+    title: "صيد الفراشات",
+    desc: "أمسك بالفراشات الطائرة لتربح نقاطاً.",
     emoji: "🦋",
     bg: "from-teal-400 to-emerald-500",
     border: "border-emerald-200",
@@ -18,7 +18,7 @@ const GAME_CARDS = [
     preview: (
       <div className="flex justify-around items-center h-20 bg-emerald-50/50 rounded-xl relative overflow-hidden">
         <span className="text-3xl animate-bounce duration-1000">🦋</span>
-        <span className="text-xl opacity-60 absolute top-2 right-4">Score: 15</span>
+        <span className="text-xl opacity-60 absolute top-2 right-4">نتيجة: 15</span>
         <div className="absolute bottom-2 left-4 w-8 h-8 rounded-full border border-emerald-400 border-dashed flex items-center justify-center text-xs text-emerald-600 bg-white">🕸️</div>
       </div>
     )
@@ -26,44 +26,58 @@ const GAME_CARDS = [
   {
     id: 2,
     number: "2",
-    title: "Placer la guitare",
-    desc: "Fais glisser la guitare et place-la dans la bonne pièce.",
-    emoji: "🎸",
-    bg: "from-orange-400 to-amber-500",
-    border: "border-amber-200",
-    text: "text-amber-700",
-    playable: false,
+    title: "لوحة الحروف العربية",
+    desc: "اضغط على الحرف لسماعه ورؤية صورته ثم اختبر نفسك!",
+    emoji: "⌨️",
+    bg: "from-cyan-400 to-blue-600",
+    border: "border-cyan-200",
+    text: "text-cyan-700",
+    playable: true,
     preview: (
-      <div className="grid grid-cols-2 gap-1 h-20 bg-amber-50/50 p-1.5 rounded-xl text-[10px] text-amber-800">
-        <div className="border border-amber-300 border-dashed rounded flex items-center justify-center bg-white">Cuisine</div>
-        <div className="border border-amber-300 border-dashed rounded flex items-center justify-center bg-amber-100/50">🎸 Chambre</div>
+      <div className="flex flex-col items-center justify-center h-20 bg-cyan-50/70 rounded-xl gap-1" dir="rtl">
+        <div className="flex gap-0.5 justify-center">
+          {['أ', 'ب', 'ت', 'ث'].map((l, i) => (
+            <span key={i} className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-white flex items-center justify-center text-[8px] font-bold shadow-sm">
+              {l}
+            </span>
+          ))}
+        </div>
+        <div className="flex gap-0.5 justify-center">
+          {['ج', 'ح', 'خ', 'د'].map((l, i) => (
+            <span key={i} className="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 text-white flex items-center justify-center text-[8px] font-bold shadow-sm">
+              {l}
+            </span>
+          ))}
+        </div>
+        <p className="text-[8px] text-cyan-700 font-bold">🐰 أرنب ← أ</p>
       </div>
     )
   },
+ 
   {
     id: 3,
     number: "3",
-    title: "Trouver le poisson",
-    desc: "Clique sur le poisson qui contient la lettre demandée.",
+    title: "ابحث عن السمكة",
+    desc: "انقر على السمكة التي تحتوي على الحرف المطلوب.",
     emoji: "🐠",
-    bg: "from-sky-400 to-blue-500",
+    bg: "from-orange-400 to-amber-500",
     border: "border-sky-200",
     text: "text-sky-700",
     playable: true,
     preview: (
       <div className="flex justify-around items-center h-20 bg-sky-50/70 rounded-xl relative overflow-hidden">
-        <div className="bg-sky-200/60 px-2 py-0.5 rounded text-[10px] text-sky-800 font-bold absolute top-1">Lettre : B</div>
-        <span className="text-xl">🐠<sub className="font-bold text-xs text-sky-950">A</sub></span>
-        <span className="text-2xl animate-pulse">🐟<sub className="font-bold text-xs text-sky-950">B</sub></span>
-        <span className="text-xl">🐡<sub className="font-bold text-xs text-sky-950">C</sub></span>
+        <div className="bg-sky-200/60 px-2 py-0.5 rounded text-[10px] text-sky-800 font-bold absolute top-1">حرف : أ</div>
+        <span className="text-xl">🐠<sub className="font-bold text-xs text-sky-950">أ  </sub></span>
+        <span className="text-2xl animate-pulse">🐟<sub className="font-bold text-xs text-sky-950">ب</sub></span>
+        <span className="text-xl">🐡<sub className="font-bold text-xs text-sky-950">ت</sub></span>
       </div>
     )
   },
     {
-    id: 22,
-    number: "22",
-    title: "Attraper les lettres",
-    desc: "Clique sur les lettres qui tombent pour gagner des points.",
+    id: 4,
+    number: "4",
+    title: "أمسك بالحروف",
+    desc: "انقر على الأحرف المتساقطة لكسب النقاط.",
     emoji: "🔤",
     bg: "from-fuchsia-400 to-pink-600",
     border: "border-pink-200",
@@ -72,13 +86,58 @@ const GAME_CARDS = [
     preview: (
       <div className="flex justify-around items-center h-20 bg-pink-50/50 rounded-xl">
         <span className="text-3xl">🔤</span>
-        <span className="text-sm opacity-60">Lettre : أ</span>
+        <span className="text-sm opacity-60">حرف : أ</span>
       </div>
     )
   },
   {
-    id: 23,
-    number: "23",
+    id: 5,
+    number: "5",
+    title: "كلمات عربية",
+    desc: "اكتب حروف الكلمة في المربعات لتكوين الكلمة الصحيحة!",
+    emoji: "🔤",
+    bg: "from-violet-500 to-fuchsia-600",
+    border: "border-fuchsia-200",
+    text: "text-fuchsia-700",
+    playable: true,
+    preview: (
+      <div className="flex flex-col items-center justify-center h-20 bg-fuchsia-50/70 rounded-xl gap-1.5" dir="rtl">
+        <span className="text-2xl">🦁</span>
+        <div className="flex gap-1 justify-center" dir="rtl">
+          {['أ', 'س', 'د'].map((l, i) => (
+            <span key={i} className="w-5 h-6 rounded border border-violet-300 bg-white flex items-center justify-center text-[10px] font-bold text-violet-750">
+              {l}
+            </span>
+          ))}
+        </div>
+        <p className="text-[9px] text-fuchsia-700">اكتب الكلمات</p>
+      </div>
+    )
+  },
+  {
+    id: 6,
+    number: "6",
+    title: "ذاكرة (Memory)",
+    desc: "اقلب البطاقات وابحث عن جميع الأزواج.",
+    emoji: "🃏",
+    bg: "from-orange-400 to-amber-500",
+    border: "border-purple-200",
+    text: "text-purple-700",
+    playable: true,
+    preview: (
+      <div className="grid grid-cols-3 gap-1 p-2 bg-purple-50/70 rounded-xl max-w-[100px] mx-auto">
+        <div className="bg-purple-600 text-white rounded text-[10px] text-center">⭐</div>
+        <div className="bg-white rounded text-[10px] text-center">🦁</div>
+        <div className="bg-purple-600 text-white rounded text-[10px] text-center">⭐</div>
+        <div className="bg-white rounded text-[10px] text-center">🦁</div>
+        <div className="bg-purple-600 text-white rounded text-[10px] text-center">⭐</div>
+        <div className="bg-purple-600 text-white rounded text-[10px] text-center">⭐</div>
+      </div>
+    )
+  },
+  {
+    id: 7,
+    number: "7",
     title: "أَرْبِطُ بِمَا يُنَاسِبُ",
     desc: "اربط كل حيوان بصورته المناسبة عن طريق الخطوط.",
     emoji: "🐢",
@@ -106,125 +165,32 @@ const GAME_CARDS = [
     )
   },
   {
-    id: 24,
-    number: "24",
-    title: "أبحث عن القطعة الناقصة",
-    desc: "اختر القطعة الصحيحة لإكمال صورة الحيوان.",
-    emoji: "🧩",
-    bg: "from-yellow-400 to-amber-500",
-    border: "border-yellow-200",
-    text: "text-yellow-700",
-    playable: true,
-    preview: (
-      <div className="flex justify-around items-center h-20 bg-yellow-50/70 rounded-xl px-2 gap-2">
-        <div className="relative">
-          <span className="text-4xl">🐭</span>
-          <div className="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-white border-2 border-dashed border-yellow-500 flex items-center justify-center text-[9px] font-black text-yellow-600">?</div>
-        </div>
-        <div className="grid grid-cols-2 gap-1">
-          {['🟤','⚫','🟡','🔴'].map((c,i) => (
-            <div key={i} className="w-5 h-5 rounded-full bg-amber-200 flex items-center justify-center text-[9px]">{c}</div>
-          ))}
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 4,
-    number: "4",
-    title: "Attraper l'oiseau",
-    desc: "Attrape uniquement l'oiseau demandé.",
-    emoji: "🐦",
-    bg: "from-teal-400 to-emerald-500",
-    border: "border-emerald-200",
-    text: "text-emerald-700",
-    playable: false,
-    preview: (
-      <div className="flex justify-around items-center h-20 bg-emerald-50/50 rounded-xl relative">
-        <span className="text-2xl">🐦</span>
-        <span className="text-xl opacity-40">🐤</span>
-        <span className="text-2xl">🐧</span>
-      </div>
-    )
-  },
-  {
-    id: 5,
-    number: "5",
-    title: "Ramasser les fleurs",
-    desc: "Ramasse toutes les fleurs qui contiennent la lettre A.",
-    emoji: "🌸",
-    bg: "from-teal-400 to-emerald-500",
-    border: "border-emerald-200",
-    text: "text-emerald-700",
-    playable: false,
-    preview: (
-      <div className="flex justify-center gap-1 items-end h-20 bg-emerald-50/50 p-1.5 rounded-xl">
-        <div className="bg-white border rounded px-1 text-center text-xs">🌸<br/>A</div>
-        <div className="bg-white border rounded px-1 text-center text-xs opacity-50">🌸<br/>B</div>
-        <div className="bg-white border rounded px-1 text-center text-xs">🌸<br/>A</div>
-      </div>
-    )
-  },
-  {
-    id: 6,
-    number: "6",
-    title: "Nourrir le bon animal",
-    desc: "Clique sur la nourriture que mange l'animal affiché !",
-    emoji: "🥕",
-    bg: "from-orange-400 to-amber-500",
-    border: "border-amber-200",
-    text: "text-amber-700",
-    playable: true,
-    preview: (
-      <div className="flex flex-col items-center justify-center h-20 bg-amber-50/50 rounded-xl gap-1">
-        <span className="text-3xl">🐰</span>
-        <div className="flex gap-1.5 text-xl">
-          <span>🥕</span><span>🍗</span><span>🍕</span><span>🥬</span>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 7,
-    number: "7",
-    title: "Trier les couleurs",
-    desc: "Glisse chaque objet vers la boite de la bonne couleur.",
-    emoji: "🎨",
+    id: 8,
+    number: "8",
+    title: "تكوين كلمة",
+    desc: "رتب الحروف بالترتيب الصحيح لتكوين الكلمة.",
+    emoji: "🐱",
     bg: "from-sky-400 to-blue-500",
     border: "border-sky-200",
     text: "text-sky-700",
-    playable: false,
+    playable: true,
     preview: (
-      <div className="flex justify-around items-center h-20 bg-sky-50/50 rounded-xl">
-        <div className="w-6 h-8 bg-red-500 rounded flex items-center justify-center text-[10px] text-white">🔴</div>
-        <div className="w-6 h-8 bg-blue-500 rounded flex items-center justify-center text-[10px] text-white">🔵</div>
-        <span className="text-xl">🍎</span>
-      </div>
-    )
-  },
-  {
-    id: 8,
-    number: "8",
-    title: "Associer les formes",
-    desc: "Glisse chaque forme vers sa silhouette.",
-    emoji: "🔺",
-    bg: "from-indigo-400 to-purple-500",
-    border: "border-purple-200",
-    text: "text-purple-700",
-    playable: false,
-    preview: (
-      <div className="flex justify-around items-center h-20 bg-purple-50/50 rounded-xl">
-        <span className="text-2xl text-blue-500">🔴</span>
-        <span className="text-2xl text-slate-300">⚫</span>
-        <span className="text-2xl text-red-500">🔺</span>
+      <div className="flex flex-col items-center justify-center h-20 bg-sky-50/70 rounded-xl">
+        <span className="text-2xl mb-1">🐱</span>
+        <div className="flex gap-0.5 text-[8px] font-bold">
+          <span className="bg-slate-200 px-1 py-0.5 rounded">C</span>
+          <span className="bg-slate-200 px-1 py-0.5 rounded">H</span>
+          <span className="bg-slate-200 px-1 py-0.5 rounded">A</span>
+          <span className="bg-slate-200 px-1 py-0.5 rounded">T</span>
+        </div>
       </div>
     )
   },
   {
     id: 9,
     number: "9",
-    title: "Compter les objets",
-    desc: "Compte les objets et choisis la bonne réponse.",
+    title: "عد الأشياء",
+    desc: "عدّ الأشياء واختر الإجابة الصحيحة.",
     emoji: "🔢",
     bg: "from-teal-400 to-emerald-500",
     border: "border-emerald-200",
@@ -248,9 +214,9 @@ const GAME_CARDS = [
     id: 10,
     number: "10",
     title: "Puzzle",
-    desc: "Remets les morceaux à leur place pour compléter l'image.",
+    desc: "أعد القطع إلى مكانها لإكمال الصورة.",
     emoji: "🧩",
-    bg: "from-orange-400 to-amber-500",
+    bg: "from-fuchsia-400 to-pink-600",
     border: "border-amber-200",
     text: "text-amber-700",
     playable: true,
@@ -271,27 +237,124 @@ const GAME_CARDS = [
   {
     id: 11,
     number: "11",
-    title: "Mémoire (Memory)",
-    desc: "Retourne les cartes et trouve toutes les paires.",
-    emoji: "🃏",
-    bg: "from-indigo-400 to-purple-500",
-    border: "border-purple-200",
-    text: "text-purple-700",
+    title: "أبحث عن القطعة الناقصة",
+    desc: "اختر القطعة الصحيحة لإكمال صورة الحيوان.",
+    emoji: "🧩",
+    bg: "from-teal-400 to-emerald-500",
+    border: "border-yellow-200",
+    text: "text-yellow-700",
     playable: true,
     preview: (
-      <div className="grid grid-cols-3 gap-1 p-2 bg-purple-50/70 rounded-xl max-w-[100px] mx-auto">
-        <div className="bg-purple-600 text-white rounded text-[10px] text-center">⭐</div>
-        <div className="bg-white rounded text-[10px] text-center">🦁</div>
-        <div className="bg-purple-600 text-white rounded text-[10px] text-center">⭐</div>
-        <div className="bg-white rounded text-[10px] text-center">🦁</div>
-        <div className="bg-purple-600 text-white rounded text-[10px] text-center">⭐</div>
-        <div className="bg-purple-600 text-white rounded text-[10px] text-center">⭐</div>
+      <div className="flex justify-around items-center h-20 bg-yellow-50/70 rounded-xl px-2 gap-2">
+        <div className="relative">
+          <span className="text-4xl">🐭</span>
+          <div className="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-white border-2 border-dashed border-yellow-500 flex items-center justify-center text-[9px] font-black text-yellow-600">?</div>
+        </div>
+        <div className="grid grid-cols-2 gap-1">
+          {['🟤','⚫','🟡','🔴'].map((c,i) => (
+            <div key={i} className="w-5 h-5 rounded-full bg-amber-200 flex items-center justify-center text-[9px]">{c}</div>
+          ))}
+        </div>
+      </div>
+    )
+  },
+  
+  {
+    id: 12,
+    number: "12",
+    title: "أطعم الحيوان المناسب",
+    desc: "انقر على الطعام الذي يأكله الحيوان المعروض !",
+    emoji: "🥕",
+    bg: "from-orange-400 to-amber-500",
+    border: "border-amber-200",
+    text: "text-amber-700",
+    playable: true,
+    preview: (
+      <div className="flex flex-col items-center justify-center h-20 bg-amber-50/50 rounded-xl gap-1">
+        <span className="text-3xl">🐰</span>
+        <div className="flex gap-1.5 text-xl">
+          <span>🥕</span><span>🍗</span><span>🍕</span><span>🥬</span>
+        </div>
       </div>
     )
   },
   {
-    id: 12,
-    number: "12",
+    id: 13,
+    number: "13",
+    title: "Attraper l'oiseau",
+    desc: "Attrape uniquement l'oiseau demandé.",
+    emoji: "🐦",
+    bg: "from-teal-400 to-emerald-500",
+    border: "border-emerald-200",
+    text: "text-emerald-700",
+    playable: false,
+    preview: (
+      <div className="flex justify-around items-center h-20 bg-emerald-50/50 rounded-xl relative">
+        <span className="text-2xl">🐦</span>
+        <span className="text-xl opacity-40">🐤</span>
+        <span className="text-2xl">🐧</span>
+      </div>
+    )
+  },
+  {
+    id: 14,
+    number: "14",
+    title: "Ramasser les fleurs",
+    desc: "Ramasse toutes les fleurs qui contiennent la lettre A.",
+    emoji: "🌸",
+    bg: "from-teal-400 to-emerald-500",
+    border: "border-emerald-200",
+    text: "text-emerald-700",
+    playable: false,
+    preview: (
+      <div className="flex justify-center gap-1 items-end h-20 bg-emerald-50/50 p-1.5 rounded-xl">
+        <div className="bg-white border rounded px-1 text-center text-xs">🌸<br/>A</div>
+        <div className="bg-white border rounded px-1 text-center text-xs opacity-50">🌸<br/>B</div>
+        <div className="bg-white border rounded px-1 text-center text-xs">🌸<br/>A</div>
+      </div>
+    )
+  },
+ 
+  {
+    id: 15,
+    number: "15",
+    title: "Trier les couleurs",
+    desc: "Glisse chaque objet vers la boite de la bonne couleur.",
+    emoji: "🎨",
+    bg: "from-sky-400 to-blue-500",
+    border: "border-sky-200",
+    text: "text-sky-700",
+    playable: false,
+    preview: (
+      <div className="flex justify-around items-center h-20 bg-sky-50/50 rounded-xl">
+        <div className="w-6 h-8 bg-red-500 rounded flex items-center justify-center text-[10px] text-white">🔴</div>
+        <div className="w-6 h-8 bg-blue-500 rounded flex items-center justify-center text-[10px] text-white">🔵</div>
+        <span className="text-xl">🍎</span>
+      </div>
+    )
+  },
+  {
+    id: 16,
+    number: "16",
+    title: "Associer les formes",
+    desc: "Glisse chaque forme vers sa silhouette.",
+    emoji: "🔺",
+    bg: "from-indigo-400 to-purple-500",
+    border: "border-purple-200",
+    text: "text-purple-700",
+    playable: false,
+    preview: (
+      <div className="flex justify-around items-center h-20 bg-purple-50/50 rounded-xl">
+        <span className="text-2xl text-blue-500">🔴</span>
+        <span className="text-2xl text-slate-300">⚫</span>
+        <span className="text-2xl text-red-500">🔺</span>
+      </div>
+    )
+  },
+ 
+  {
+    id: 17,
+    number: "17",
     title: "Relier l'image au mot",
     desc: "Relie chaque image au mot correspondant.",
     emoji: "🔗",
@@ -314,8 +377,8 @@ const GAME_CARDS = [
     )
   },
   {
-    id: 13,
-    number: "13",
+    id: 18,
+    number: "18",
     title: "Éclater les bulles",
     desc: "Éclate uniquement les bulles qui contiennent la lettre A.",
     emoji: "🫧",
@@ -332,8 +395,8 @@ const GAME_CARDS = [
     )
   },
   {
-    id: 14,
-    number: "14",
+    id: 19,
+    number: "19",
     title: "Labyrinthe",
     desc: "Aide le personnage à trouver le chemin jusqu'à la sortie.",
     emoji: "🌀",
@@ -350,8 +413,8 @@ const GAME_CARDS = [
     )
   },
   {
-    id: 15,
-    number: "15",
+    id: 20,
+    number: "20",
     title: "Course des lettres",
     desc: "Récupère les lettres dans l'ordre et évite les obstacles.",
     emoji: "🏃",
@@ -368,8 +431,8 @@ const GAME_CARDS = [
     )
   },
   {
-    id: 16,
-    number: "16",
+    id: 21,
+    number: "21",
     title: "Ranger la chambre",
     desc: "Remets chaque objet à sa place.",
     emoji: "🧸",
@@ -386,8 +449,8 @@ const GAME_CARDS = [
     )
   },
   {
-    id: 17,
-    number: "17",
+    id: 22,
+    number: "22",
     title: "Attraper les chiffres",
     desc: "Attrape uniquement le chiffre demandé.",
     emoji: "🎈",
@@ -404,8 +467,8 @@ const GAME_CARDS = [
     )
   },
   {
-    id: 18,
-    number: "18",
+    id: 23,
+    number: "23",
     title: "Écouter et choisir",
     desc: "Écoute le mot et choisis l'image correspondante.",
     emoji: "🔊",
@@ -424,31 +487,10 @@ const GAME_CARDS = [
       </div>
     )
   },
+ 
   {
-    id: 19,
-    number: "19",
-    title: "Construire un mot",
-    desc: "Remets les lettres dans le bon ordre pour former le mot.",
-    emoji: "🐱",
-    bg: "from-sky-400 to-blue-500",
-    border: "border-sky-200",
-    text: "text-sky-700",
-    playable: true,
-    preview: (
-      <div className="flex flex-col items-center justify-center h-20 bg-sky-50/70 rounded-xl">
-        <span className="text-2xl mb-1">🐱</span>
-        <div className="flex gap-0.5 text-[8px] font-bold">
-          <span className="bg-slate-200 px-1 py-0.5 rounded">C</span>
-          <span className="bg-slate-200 px-1 py-0.5 rounded">H</span>
-          <span className="bg-slate-200 px-1 py-0.5 rounded">A</span>
-          <span className="bg-slate-200 px-1 py-0.5 rounded">T</span>
-        </div>
-      </div>
-    )
-  },
-  {
-    id: 20,
-    number: "20",
+    id: 24,
+    number: "24",
     title: "Jeu des saisons",
     desc: "Glisse chaque image vers la bonne saison.",
     emoji: "🍂",
@@ -464,57 +506,21 @@ const GAME_CARDS = [
       </div>
     )
   },
-  {
-    id: 21,
-    number: "21",
-    title: "كلمات عربية",
-    desc: "اكتب حروف الكلمة في المربعات لتكوين الكلمة الصحيحة!",
-    emoji: "🔤",
-    bg: "from-violet-500 to-fuchsia-600",
-    border: "border-fuchsia-200",
-    text: "text-fuchsia-700",
-    playable: true,
-    preview: (
-      <div className="flex flex-col items-center justify-center h-20 bg-fuchsia-50/70 rounded-xl gap-1.5" dir="rtl">
-        <span className="text-2xl">🦁</span>
-        <div className="flex gap-1 justify-center" dir="rtl">
-          {['أ', 'س', 'د'].map((l, i) => (
-            <span key={i} className="w-5 h-6 rounded border border-violet-300 bg-white flex items-center justify-center text-[10px] font-bold text-violet-750">
-              {l}
-            </span>
-          ))}
-        </div>
-        <p className="text-[9px] text-fuchsia-700">اكتب الكلمات</p>
-      </div>
-    )
-  },
+ 
   {
     id: 25,
     number: "25",
-    title: "لوحة الحروف العربية",
-    desc: "اضغط على الحرف لسماعه ورؤية صورته ثم اختبر نفسك!",
-    emoji: "⌨️",
-    bg: "from-cyan-400 to-blue-600",
-    border: "border-cyan-200",
-    text: "text-cyan-700",
-    playable: true,
+    title: "Placer la guitare",
+    desc: "Fais glisser la guitare et place-la dans la bonne pièce.",
+    emoji: "🎸",
+    bg: "from-orange-400 to-amber-500",
+    border: "border-amber-200",
+    text: "text-amber-700",
+    playable: false,
     preview: (
-      <div className="flex flex-col items-center justify-center h-20 bg-cyan-50/70 rounded-xl gap-1" dir="rtl">
-        <div className="flex gap-0.5 justify-center">
-          {['أ', 'ب', 'ت', 'ث'].map((l, i) => (
-            <span key={i} className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-white flex items-center justify-center text-[8px] font-bold shadow-sm">
-              {l}
-            </span>
-          ))}
-        </div>
-        <div className="flex gap-0.5 justify-center">
-          {['ج', 'ح', 'خ', 'د'].map((l, i) => (
-            <span key={i} className="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 text-white flex items-center justify-center text-[8px] font-bold shadow-sm">
-              {l}
-            </span>
-          ))}
-        </div>
-        <p className="text-[8px] text-cyan-700 font-bold">🐰 أرنب ← أ</p>
+      <div className="grid grid-cols-2 gap-1 h-20 bg-amber-50/50 p-1.5 rounded-xl text-[10px] text-amber-800">
+        <div className="border border-amber-300 border-dashed rounded flex items-center justify-center bg-white">Cuisine</div>
+        <div className="border border-amber-300 border-dashed rounded flex items-center justify-center bg-amber-100/50">🎸 Chambre</div>
       </div>
     )
   }
@@ -558,9 +564,9 @@ export default function App() {
             <span className="text-4xl hover:rotate-12 transition-transform duration-300 pointer-events-none select-none">🎮</span>
             <div>
               <h1 className="font-display text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent m-0 py-0 tracking-tight">
-                jeux Quizz
-              </h1>
-              <p className="text-xs text-slate-500 font-medium tracking-wide m-0">Apprendre en s'amusant !</p>
+              ألعاب
+                            </h1>
+              <p className="text-xs text-slate-500 font-medium tracking-wide m-0">التعلم أثناء الاستمتاع!!</p>
             </div>
           </div>
 
@@ -599,11 +605,9 @@ export default function App() {
             <span className="text-6xl animate-float block select-none">🧙‍♂️</span>
             <div>
               <h2 className="font-display text-2xl font-bold text-white mb-1">
-                Bonjour petit aventurier !
-              </h2>
+              مرحباً أيها المغامر الصغير!              </h2>
               <p className="text-indigo-50 text-sm md:text-base max-w-xl font-medium">
-                Choisis un des jeux ci-dessous pour t'entraîner, battre le chronomètre et gagner plein d'étoiles scintillantes ! 🌟
-              </p>
+              اختر إحدى الألعاب أدناه لتتمرن، وتتغلب على الوقت، وتربح الكثير من النجوم المتلألئة! 🌟              </p>
             </div>
           </div>
           <button
@@ -618,13 +622,13 @@ export default function App() {
         <div className="flex justify-between items-center mb-6">
           <div>
             <h2 className="font-display text-3xl font-extrabold text-slate-800 tracking-wide">
-              21 Idées de Jeux Éducatifs
-            </h2>
-            <p className="text-slate-500 text-sm font-medium">Cliques sur un jeu disponible pour commencer l'aventure !</p>
+            ألعاب تعليمية            </h2>
+            <p className="text-slate-500 text-sm font-medium">
+            انقر على لعبة متاحة لبدء المغامرة!              </p>
           </div>
           <div className="bg-indigo-100 text-indigo-700 px-4 py-1 rounded-full text-xs font-bold flex items-center gap-1">
             <Sparkles size={14} />
-            <span>5 Nouveaux Jeux</span>
+            <span>5 ألعاب جديدة</span>
           </div>
         </div>
 
@@ -649,14 +653,14 @@ export default function App() {
               {/* Locked overlay */}
               {!game.playable && (
                 <div className="absolute top-2 right-2 bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-0.5 border border-slate-200">
-                  <Lock size={8} /> Bientôt
+                  <Lock size={8} /> قريباً
                 </div>
               )}
 
               {/* Playable badge */}
               {game.playable && (
                 <div className="absolute top-2 right-2 bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-0.5 border border-emerald-200 animate-pulse">
-                  ✨ Jouer
+                  ✨ ألعب
                 </div>
               )}
 
@@ -682,12 +686,12 @@ export default function App() {
               <div className="mt-3">
                 {game.playable ? (
                   <button className={`w-full py-2 bg-gradient-to-r ${game.bg} text-white font-display text-xs font-bold rounded-xl shadow-md border-b-4 border-black/10 active:translate-y-0.5 active:border-b-0 transition-all text-center flex items-center justify-center gap-1 group-hover:scale-[1.02]`}>
-                    <span>Jouer Maintenant</span>
+                    <span>العب الآن</span>
                     <ChevronRight size={14} />
                   </button>
                 ) : (
                   <button disabled className="w-full py-2 bg-slate-100 text-slate-400 font-display text-xs font-bold rounded-xl text-center flex items-center justify-center gap-1 border border-slate-200 opacity-60">
-                    <span>Prochainement</span>
+                    <span>لاحقا</span>
                   </button>
                 )}
               </div>
@@ -702,12 +706,12 @@ export default function App() {
           <div>
             <h4 className="text-slate-600 font-display text-sm font-bold mb-2.5">Fonctionnalités Communes</h4>
             <ul className="grid grid-cols-2 gap-2 text-[11px] text-slate-500">
-              <li className="flex items-center gap-1 justify-center md:justify-start">✅ Score et système d'étoiles</li>
-              <li className="flex items-center gap-1 justify-center md:justify-start">✅ Niveaux progressifs</li>
-              <li className="flex items-center gap-1 justify-center md:justify-start">✅ Sons (réussite / échec)</li>
-              <li className="flex items-center gap-1 justify-center md:justify-start">✅ Chronomètre (temps limité)</li>
-              <li className="flex items-center gap-1 justify-center md:justify-start">✅ Interface colorée et responsive</li>
-              <li className="flex items-center gap-1 justify-center md:justify-start">✅ Adapté aux enfants</li>
+              <li className="flex items-center gap-1 justify-center md:justify-start">✅ نظام تسجيل النقاط والنجوم</li>
+              <li className="flex items-center gap-1 justify-center md:justify-start">✅ مستويات متدرجة</li>
+              <li className="flex items-center gap-1 justify-center md:justify-start">✅ أصوات (نجاح/فشل)</li>
+              <li className="flex items-center gap-1 justify-center md:justify-start">✅ مؤقت (وقت محدود)</li>
+              <li className="flex items-center gap-1 justify-center md:justify-start">✅ واجهة ملونة وسريعة الاستجابة</li>
+              <li className="flex items-center gap-1 justify-center md:justify-start">✅ مناسب للأطفال</li>
             </ul>
           </div>
           <div className="flex flex-col justify-center items-center md:items-end">
