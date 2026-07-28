@@ -291,7 +291,7 @@ export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAdd
               </motion.div>
               <h4 className="font-display text-3xl font-bold mb-2">انتهى الوقت !</h4>
               <p className="text-rose-200 mb-6 max-w-sm">
-              هذه هي المقلاة! هذه أفضل طريقة لفعل ذلك                            </p>
+                                       </p>
               <div className="flex gap-4">
                 <button
                   onClick={resetGame}
