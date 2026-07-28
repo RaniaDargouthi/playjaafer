@@ -6,8 +6,9 @@ export default function FishGame({ onCorrect, onIncorrect }) {
   const [fishList, setFishList] = useState([]);
   const [bubbleList, setBubbleList] = useState([]);
 
-  // Generate random uppercase letters
-  const getRandomLetter = () => String.fromCharCode(65 + Math.floor(Math.random() * 26));
+  // Generate random Arabic letters
+  const ARABIC_LETTERS = ['أ', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'];
+  const getRandomLetter = () => ARABIC_LETTERS[Math.floor(Math.random() * ARABIC_LETTERS.length)];
 
   const generateRound = () => {
     const target = getRandomLetter();
@@ -20,8 +21,8 @@ export default function FishGame({ onCorrect, onIncorrect }) {
     }
 
     const fishArray = Array.from(letters).map((letter, index) => {
-      // Random starting positions and swimming directions
-      const isLeft = Math.random() > 0.5;
+      // Swimming from left to right only
+      const isLeft = false;
       return {
         id: index,
         letter,
@@ -29,7 +30,7 @@ export default function FishGame({ onCorrect, onIncorrect }) {
         // Speed
         duration: 8 + Math.random() * 6,
         // Start position
-        y: 15 + index * 15 + Math.random() * 8, // Distributed vertically
+        y: 5 + index * 10 + Math.random() * 5, // Distributed vertically
         isLeft,
       };
     });
@@ -70,7 +71,7 @@ export default function FishGame({ onCorrect, onIncorrect }) {
       <div className="text-center mb-6">
         <h3 className="font-display text-2xl md:text-3xl text-indigo-900 mb-1">
         ابحث عن السمكة التي تحمل الحرف:        </h3>
-        <div className="inline-flex items-center justify-center bg-indigo-600 text-white font-display text-5xl w-20 h-20 rounded-full shadow-lg border-4 border-indigo-200 animate-bounce">
+        <div className="inline-flex items-center justify-center bg-indigo-600 text-white font-arabic text-5xl w-20 h-20 rounded-full shadow-lg border-4 border-indigo-200 animate-bounce">
           {targetLetter}
         </div>
       </div>
@@ -122,9 +123,9 @@ export default function FishGame({ onCorrect, onIncorrect }) {
                 key={`${fish.id}-${fish.letter}`}
                 className="absolute cursor-pointer p-2 origin-center"
                 style={{ top: `${fish.y}%` }}
-                initial={{ x: fish.isLeft ? "105%" : "-25%" }}
+                initial={{ left: fish.isLeft ? "115%" : "-25%" }}
                 animate={{
-                  x: fish.isLeft ? "-25%" : "105%",
+                  left: fish.isLeft ? "-25%" : "115%",
                 }}
                 transition={{
                   duration: fish.duration,
@@ -138,40 +139,60 @@ export default function FishGame({ onCorrect, onIncorrect }) {
                 {/* SVG Fish representation */}
                 <div className="relative group filter drop-shadow-md">
                   <svg
-                    width="95"
-                    height="65"
-                    viewBox="0 0 100 70"
+                    width="110"
+                    height="75"
+                    viewBox="0 0 110 75"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="transition-transform duration-300"
+                    className="transition-transform duration-300 drop-shadow-xl"
                     style={{ transform: fish.isLeft ? "scaleX(-1)" : "scaleX(1)" }}
                   >
+                    {/* Back Fin */}
+                    <path
+                      d="M30 35 C30 15, 60 5, 70 30 Z"
+                      fill={fish.color.tail}
+                    />
                     {/* Tail fin */}
                     <path
-                      d="M15 35 C5 20, 0 15, 5 35 C0 55, 5 50, 15 35 Z"
+                      d="M25 38 C5 15, 0 20, 5 38 C0 55, 5 60, 25 38 Z"
                       fill={fish.color.tail}
                     />
                     {/* Body */}
                     <path
-                      d="M15 35 C35 15, 80 15, 85 35 C80 55, 35 55, 15 35 Z"
+                      d="M20 38 C40 10, 95 10, 100 38 C95 65, 40 65, 20 38 Z"
                       fill={fish.color.body}
                     />
                     {/* Eye */}
-                    <circle cx="75" cy="30" r="5" fill="white" />
-                    <circle cx="76" cy="30" r="2.5" fill="black" />
-                    {/* Fin */}
+                    <circle cx="80" cy="30" r="7" fill="white" />
+                    <circle cx="82" cy="30" r="3" fill="#1e293b" />
+                    {/* Catchlight */}
+                    <circle cx="83" cy="29" r="1.5" fill="white" />
+                    {/* Smile */}
                     <path
-                      d="M45 42 C40 50, 42 53, 47 48 Z"
+                      d="M80 45 Q85 50 90 45"
+                      stroke="#1e293b"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                    {/* Side Fin */}
+                    <path
+                      d="M45 45 C40 60, 55 60, 50 45 Z"
                       fill={fish.color.tail}
                     />
+                    {/* Scales */}
+                    <path d="M40 30 Q45 35 40 40" stroke="white" strokeOpacity="0.4" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+                    <path d="M50 25 Q55 30 50 35" stroke="white" strokeOpacity="0.4" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+                    <path d="M50 40 Q55 45 50 50" stroke="white" strokeOpacity="0.4" strokeWidth="2.5" strokeLinecap="round" fill="none" />
                   </svg>
                   {/* Letter on the fish */}
                   <div
-                    className={`absolute inset-0 flex items-center justify-center font-display text-2xl font-bold text-slate-800 pointer-events-none select-none`}
+                    className={`absolute inset-0 flex items-center justify-center font-arabic text-2xl font-bold text-slate-800 pointer-events-none select-none`}
                     style={{
-                      // Shift text to match body center
+                      // Shift text to match new body center
                       paddingLeft: fish.isLeft ? "0px" : "15px",
                       paddingRight: fish.isLeft ? "15px" : "0px",
+                      paddingBottom: "5px",
                     }}
                   >
                     {fish.letter}

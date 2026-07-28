@@ -70,21 +70,23 @@ export function playFailure() {
     const ctx = getAudioContext();
     const now = ctx.currentTime;
     
+    // Play a cute "oops" descending slide (e.g., sliding down from a high pitch)
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(130, now); // Low buzz
-    osc.frequency.linearRampToValueAtTime(80, now + 0.25);
+    osc.type = 'sine'; // Sine wave is soft and cute
+    osc.frequency.setValueAtTime(400, now);
+    osc.frequency.exponentialRampToValueAtTime(150, now + 0.3); // Slide down pitch
     
-    gain.gain.setValueAtTime(0.15, now);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.15, now + 0.05); // Quick attack
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3); // Fade out
     
     osc.connect(gain);
     gain.connect(ctx.destination);
     
-    osc.start();
-    osc.stop(now + 0.25);
+    osc.start(now);
+    osc.stop(now + 0.3);
   } catch (e) {
     console.warn("Audio Context error:", e);
   }
