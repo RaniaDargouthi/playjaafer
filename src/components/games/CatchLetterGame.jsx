@@ -44,41 +44,45 @@ export default function CatchLetterGame({ onCorrect, onIncorrect }) {
       const arenaWidth = rect.width;
       const arenaHeight = rect.height;
 
-      // Letters pool contains the target letter with higher frequency to make it fun, plus other letters
-      const possibleLetters = [...LETTERS, targetLetter, targetLetter];
-      const char = possibleLetters[Math.floor(Math.random() * possibleLetters.length)];
+      // Increase the probability of getting the target letter (e.g., 60% chance)
+      const isTarget = Math.random() > 0.4;
+      const char = isTarget ? targetLetter : LETTERS[Math.floor(Math.random() * LETTERS.length)];
       const color = COLORS[Math.floor(Math.random() * COLORS.length)];
 
-      const startFromLeft = Math.random() > 0.5;
-      const startX = startFromLeft ? -70 : arenaWidth + 70;
-      const endX = startFromLeft ? arenaWidth + 70 : -70;
+      // Start from a random X at the top, and fall down to the bottom
+      const startX = Math.random() * (arenaWidth - 80) + 40;
+      const midX1 = startX + (Math.random() * 120 - 60); // Wobble left/right
+      const midX2 = startX + (Math.random() * 120 - 60);
+      const endX = startX + (Math.random() * 120 - 60);
 
-      const startY = Math.random() * (arenaHeight - 160) + 60;
-      const midY1 = Math.random() * (arenaHeight - 160) + 60;
-      const midY2 = Math.random() * (arenaHeight - 160) + 60;
-      const endY = Math.random() * (arenaHeight - 160) + 60;
+      const startY = -80; // Start above the arena
+      const midY1 = arenaHeight * 0.35;
+      const midY2 = arenaHeight * 0.65;
+      const endY = arenaHeight + 80; // End below the arena
 
-      const speed = 7 + Math.random() * 6; // flight speed
+      const speed = 6 + Math.random() * 5; // falling speed (slightly faster)
 
       const newLetter = {
         id: Math.random(),
         char,
         color,
-        xPath: [startX, arenaWidth * 0.35, arenaWidth * 0.65, endX],
+        xPath: [startX, midX1, midX2, endX],
         yPath: [startY, midY1, midY2, endY],
         duration: speed,
         size: 70 + Math.random() * 20, // bubble size
       };
 
-      setLettersPool(prev => [...prev.slice(-8), newLetter]);
+      setLettersPool(prev => [...prev.slice(-12), newLetter]); // Allow more bubbles on screen
     };
 
-    // Initial spaws
+    // Initial spawns
     setTimeout(spawnBubble, 100);
-    setTimeout(spawnBubble, 600);
-    setTimeout(spawnBubble, 1200);
+    setTimeout(spawnBubble, 500);
+    setTimeout(spawnBubble, 900);
+    setTimeout(spawnBubble, 1300);
 
-    const interval = setInterval(spawnBubble, 1800);
+    // Faster spawn interval to have more balloons
+    const interval = setInterval(spawnBubble, 1200);
     return () => clearInterval(interval);
   }, [targetLetter]);
 
@@ -133,10 +137,10 @@ export default function CatchLetterGame({ onCorrect, onIncorrect }) {
       {/* Game Header */}
       <div className="text-center mb-3">
         <h3 className="font-display text-2xl md:text-3xl text-indigo-900 mb-1 flex items-center justify-center gap-2">
-          🎈 أمسك بالحرف العربي: <span className="bg-indigo-600 text-white font-arabic font-extrabold px-3.5 py-1 rounded-2xl shadow border-b-4 border-indigo-800">{targetLetter}</span>
+          <span className="bg-indigo-600 text-white font-arabic font-extrabold px-3.5 py-1 rounded-2xl shadow border-b-4 border-indigo-800">{targetLetter}</span> أمسك بالحرف 
         </h3>
         <p className="text-slate-500 text-sm font-semibold mt-1">
-          انقر على الفقاعة التي تحتوي على الحرف المطلوب! ({catches}/3)
+          {/* انقر على الفقاعة التي تحتوي على الحرف المطلوب! ({catches}/3) */}
         </p>
       </div>
 
