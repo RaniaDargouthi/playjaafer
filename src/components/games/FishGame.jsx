@@ -98,7 +98,7 @@ export default function FishGame({ onCorrect, onIncorrect }) {
         {/* Badge flashes gold → indigo on every new round */}
         <motion.div
           key={flashKey}
-          className="inline-flex items-center justify-center text-white font-arabic text-5xl w-20 h-20 rounded-full shadow-xl border-4 border-white"
+          className="inline-flex items-center justify-center text-white font-arabic text-3xl w-20 h-20 rounded-full shadow-xl border-4 border-white"
           initial={{ scale: 1.6, backgroundColor: '#F59E0B', rotate: -15 }}
           animate={{ scale: 1,   backgroundColor: '#4F46E5', rotate: 0   }}
           transition={{ duration: 0.55, type: 'spring', stiffness: 260, damping: 18 }}
