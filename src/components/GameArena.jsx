@@ -63,9 +63,10 @@ const CONFETTI_COLORS = [
 ];
 
 export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAddGlobalStars }) {
+  const initialTime = gameId === 2 ? 240 : 45; // 240s for ArabicAlphabetGame, 45s for others
   const [score, setScore] = useState(0);
   const [stars, setStars] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(45); // 45 seconds timer
+  const [timeLeft, setTimeLeft] = useState(initialTime);
   const [gameState, setGameState] = useState('playing'); // playing, paused, won, lost
   const [isMuted, setIsMuted] = useState(false);
 
@@ -102,8 +103,8 @@ export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAdd
       if (newScore > 0 && newScore % 30 === 0) {
         setStars(s => s + 1);
       }
-      // Automatical win at 60 points
-      if (newScore >= 60) {
+      // For ArabicAlphabetGame (gameId 2), no win screen — game continues until time runs out
+      if (newScore >= 60 && gameId !== 2) {
         handleWin();
       }
       return newScore;
@@ -136,7 +137,7 @@ export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAdd
     playClick();
     setScore(0);
     setStars(0);
-    setTimeLeft(45);
+    setTimeLeft(initialTime);
     setGameState('playing');
   };
 
@@ -309,8 +310,8 @@ export default function GameArena({ gameId, gameTitle, gameColor, onClose, onAdd
             </div>
           )}
 
-          {/* GAME WON OVERLAY */}
-          {gameState === 'won' && (
+          {/* GAME WON OVERLAY — hidden for ArabicAlphabetGame (gameId 2) */}
+          {gameState === 'won' && gameId !== 2 && (
             <div className="absolute inset-0 bg-emerald-900/95 backdrop-blur-sm z-30 flex flex-col items-center justify-center text-white p-6 text-center">
               <motion.div
                 initial={{ scale: 0, y: 50 }}
